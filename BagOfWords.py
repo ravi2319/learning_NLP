@@ -40,12 +40,12 @@ for i in range(len(sentences)):
     review = re.sub('[^a-zA-Z]', ' ', sentences[i])
     review = review.lower()
     review = review.split()
-    review = [wordnet.lemmatize(word) for word in review if not word in set(stopwords.words('english'))]
+    review = [wordnet.lemmatize(word) for word in review if word not in set(stopwords.words('english'))]
     review = ' '.join(review)
     corpus.append(review)
 
 
-#create bag of words
+# create bag of words
 cv = CountVectorizer()
 x = cv.fit_transform(corpus).toarray()
 
